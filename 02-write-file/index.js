@@ -8,3 +8,4 @@ stdin.on('data', data => {
     if(data.toString().trim() === 'exit'){process.exit();}else{file.write(data);}
 });
 process.on('exit', () => stdout.write('До свидания!'));
+process.on('SIGINT', () => {process.exit();});
