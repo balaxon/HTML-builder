@@ -54,6 +54,7 @@ function copyassets(ass,newass){
 }
 function createhtml(){
     var html = '';
+    let i = 0;
     const read = fs.createReadStream(__dirname+'\\template.html', 'utf8');
     read.on('data',(data) => {
         html=data;
@@ -72,6 +73,8 @@ function createhtml(){
                           return;
                         }
                         html = html.replace('{{'+file.split('.')[0]+'}}',data);
+                        console.log(i);
+                        i+=1;
                         fs.writeFile(path.join(newfolder,'index.html'), html, function(error){
                             if(error) throw error;
                         });
